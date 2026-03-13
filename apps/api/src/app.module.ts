@@ -17,6 +17,7 @@ import { DgiiModule } from './modules/dgii/dgii.module';
 import { ReportsModule } from './modules/reports/reports.module';
 import { JobsModule } from './modules/jobs/jobs.module';
 import { StorageModule } from './modules/storage/storage.module';
+import { HealthModule } from './modules/health/health.module';
 import { typeOrmModuleOptions } from './config/typeorm.config';
 import { redisModuleOptions } from './config/bull.config';
 
@@ -51,6 +52,7 @@ import { redisModuleOptions } from './config/bull.config';
     ReportsModule,
     JobsModule,
     StorageModule,
+    HealthModule,
   ],
 })
 export class AppModule {}
