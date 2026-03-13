@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+*.lcov
+
+# TypeScript
+*.tsbuildinfo
+
+# Config file build outputs (from tsc --composite)
+apps/web/vite.config.js
+apps/web/vite.config.d.ts
+apps/web/vitest.config.js
+apps/web/vitest.config.d.ts
+apps/api/dist/
+
+# Cache
+.eslintcache
+.turbo/
+
+# Uploads / temp
+uploads/
+tmp/
+
+# Docker volumes
+.docker/
+
+# Prisma
+prisma/migrations/dev/
+
+# pnpm
+.pnpm-store/
