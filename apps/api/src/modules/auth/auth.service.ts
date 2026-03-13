@@ -45,7 +45,7 @@ export class AuthService {
       name: dto.name,
       email: dto.email,
       passwordHash,
-      status: UserStatus.PENDING,
+      status: UserStatus.ACTIVE,
     });
     await this.userRepository.save(user);
 

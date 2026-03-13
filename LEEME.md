@@ -230,6 +230,66 @@ Abre tu navegador en **http://localhost:5173**. Deberías ver la pantalla de ini
 
 ---
 
+## Paso 8 — Crear tu primera cuenta y hacer login
+
+### 8.1 Registrar un usuario
+
+Abre **http://localhost:5173/register** y completa el formulario:
+
+| Campo | Requisito |
+|-------|-----------|
+| Nombre Completo | mínimo 2 caracteres |
+| Correo Electrónico | formato válido (ej. `juan@empresa.do`) |
+| Contraseña | mínimo 8 caracteres, al menos una mayúscula y un número |
+| Confirmar Contraseña | debe coincidir con la contraseña |
+
+También puedes registrarte directamente desde la API usando curl:
+
+```bash
+curl -X POST http://localhost:3000/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Juan Pérez",
+    "email": "juan@empresa.do",
+    "password": "SecurePass1"
+  }'
+```
+
+### 8.2 Iniciar sesión
+
+Después de registrarte serás redirigido automáticamente a `/login`. Ingresa tu correo y contraseña.
+
+Al iniciar sesión correctamente:
+- Recibirás un **access token** (válido 15 minutos) y un **refresh token** (válido 7 días)
+- Los tokens se guardan automáticamente en `localStorage`
+- Serás redirigido al **Dashboard**
+
+### 8.3 Cómo funciona la autenticación
+
+```
+1. Registro → cuenta creada y activada automáticamente
+2. Login    → recibe access token (15 min) + refresh token (7 días)
+3. Rutas    → el access token se envía en cada petición como:
+              Authorization: Bearer <token>
+4. Expiración → el frontend renueva el token automáticamente usando
+                el refresh token (sin interrumpir la sesión)
+5. Logout   → revoca todos los refresh tokens en la base de datos
+```
+
+### 8.4 Acceder a la documentación interactiva de la API (Swagger)
+
+Puedes explorar y probar todos los endpoints desde el navegador en:
+
+**http://localhost:3000/api/docs**
+
+Para probar endpoints protegidos en Swagger:
+1. Usa `POST /auth/login` para obtener un `accessToken`
+2. Haz clic en el botón **Authorize 🔒** (arriba a la derecha)
+3. Ingresa: `Bearer <tu_accessToken>`
+4. Ahora todos los endpoints protegidos estarán disponibles
+
+---
+
 ## Estructura del proyecto
 
 ```
