@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useAuthStore } from '@/store/auth.store';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { AuthLayout } from '@/components/layout/AuthLayout';
 import { LoginPage } from '@/pages/auth/LoginPage';
@@ -13,13 +12,17 @@ import { ReportsPage } from '@/pages/reports/ReportsPage';
 import { SettingsPage } from '@/pages/settings/SettingsPage';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+  // Auth temporarily disabled — always render children
+  // const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  // return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+  return <>{children}</>;
 }
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>;
+  // Auth temporarily disabled — always render children
+  // const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  // return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>;
+  return <>{children}</>;
 }
 
 export default function App() {
