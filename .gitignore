@@ -42,6 +42,13 @@ coverage/
 # TypeScript
 *.tsbuildinfo
 
+# Config file build outputs (from tsc --composite)
+apps/web/vite.config.js
+apps/web/vite.config.d.ts
+apps/web/vitest.config.js
+apps/web/vitest.config.d.ts
+apps/api/dist/
+
 # Cache
 .eslintcache
 .turbo/
