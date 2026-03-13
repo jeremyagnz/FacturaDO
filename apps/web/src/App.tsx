@@ -10,19 +10,16 @@ import { InvoiceDetailPage } from '@/pages/invoices/InvoiceDetailPage';
 import { CreateInvoicePage } from '@/pages/invoices/CreateInvoicePage';
 import { ReportsPage } from '@/pages/reports/ReportsPage';
 import { SettingsPage } from '@/pages/settings/SettingsPage';
+import { useAuthStore } from '@/store/auth.store';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  // Auth temporarily disabled — always render children
-  // const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  // return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
-  return <>{children}</>;
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
 }
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
-  // Auth temporarily disabled — always render children
-  // const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  // return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>;
-  return <>{children}</>;
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>;
 }
 
 export default function App() {
@@ -58,8 +55,8 @@ export default function App() {
       </Route>
 
       {/* Default redirect */}
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 }
