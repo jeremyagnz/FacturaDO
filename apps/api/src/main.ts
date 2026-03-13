@@ -68,6 +68,7 @@ async function bootstrap() {
       .addTag('reports', 'Reports and analytics')
       .addTag('jobs', 'Background job management')
       .addTag('storage', 'File storage (Cloudflare R2)')
+      .addTag('health', 'Health check — server status')
       .build();
 
     const document = SwaggerModule.createDocument(app, swaggerConfig);
