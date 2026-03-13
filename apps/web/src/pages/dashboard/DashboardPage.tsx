@@ -3,7 +3,6 @@ import {
   TrendingUp,
   FileText,
   CheckCircle,
-  XCircle,
   DollarSign,
   AlertCircle,
 } from 'lucide-react';

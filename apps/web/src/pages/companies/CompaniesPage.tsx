@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Plus, Building2, CheckCircle, Clock, XCircle } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { Plus, Building2, CheckCircle, Clock } from 'lucide-react';
 import { companiesService } from '@/services/companies.service';
 import { CompanyStatus } from '@/types/company.types';
 import { formatRnc } from '@/lib/utils';
@@ -18,19 +18,11 @@ const statusConfig: Record<CompanyStatus, { label: string; className: string }> 
 
 export function CompaniesPage() {
   const [search, setSearch] = useState('');
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const queryClient = useQueryClient();
+  const [, setShowCreateModal] = useState(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ['companies', search],
     queryFn: () => companiesService.list({ search: search || undefined }),
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: companiesService.delete,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['companies'] });
-    },
   });
 
   return (
