@@ -52,6 +52,7 @@ pnpm dev
 
 ## Documentation
 
+- 🇩🇴 [Guía de Instalación en Español](LEEME.md)
 - [Architecture Overview](docs/architecture.md)
 - [API Reference](docs/api.md)
 - [Deployment Guide](docs/deployment.md)
